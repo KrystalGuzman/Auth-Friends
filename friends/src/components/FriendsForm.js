@@ -5,7 +5,7 @@ import { AxiosWithAuth } from '../utils/AxiosWithAuth';
 const FriendsForm = props => {
   const { handleSubmit, register, errors } = useForm();
 
-  const [friendInfo, setFriendInfo] = useState({ name: '', age: '', email: '' });
+  const [friendInfo, setFriendInfo] = useState({ name: '', age: '', height: '', email: '' });
   
   const onSubmit = e => {
     AxiosWithAuth()
@@ -51,6 +51,20 @@ const FriendsForm = props => {
         })}
       />
       {errors.age && errors.age.message}
+
+      <br></br>
+
+      <label htmlFor='height'></label>
+      <input
+        placeholder='Height in inches'
+        id='height'
+        name='height'
+        onChange={handleChanges}
+        ref={register({
+          required: 'Height required.'
+        })}
+      />
+      {errors.height && errors.height.message}
 
       <label htmlFor='email'></label>
       <input
